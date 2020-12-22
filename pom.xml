@@ -69,7 +69,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <testng-version>7.3.0</testng-version>
-        <testops-commons-version>1.0.0-SNAPSHOT</testops-commons-version>
+        <testops-commons-version>0.0.1-SNAPSHOT</testops-commons-version>
     </properties>
 
     <repositories>

@@ -1,4 +1,4 @@
-package testops;
+package com.katalon.testops.testng.reporter;
 
 import org.testng.SkipException;
 import org.testng.annotations.BeforeMethod;

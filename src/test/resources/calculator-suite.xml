@@ -6,12 +6,12 @@
     <parameter name="result" value="0" />
     <test name="Calculator Test">
         <classes>
-            <class name="com.katalon.testops.CalculatorTestNGTest"/>
+            <class name="com.katalon.testops.testng.reporter.CalculatorTestNGTest"/>
         </classes>
     </test>
     <test name="Calculator Divide By Zero Test">
         <classes>
-            <class name="com.katalon.testops.CalculatorDivideByZeroTestNGTest"/>
+            <class name="com.katalon.testops.testng.reporter.CalculatorDivideByZeroTestNGTest"/>
         </classes>
     </test>
 </suite>

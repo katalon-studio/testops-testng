@@ -1,4 +1,4 @@
-package testops;
+package com.katalon.testops.testng.reporter;
 
 public class Calculator {
 
