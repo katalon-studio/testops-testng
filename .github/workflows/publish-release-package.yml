@@ -1,0 +1,40 @@
+name: Publish release package
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Cache maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+
+      - name: Deploy Maven Package
+        env:
+          GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          MAVEN_JENKINS_USERNAME: ${{ secrets.MAVEN_JENKINS_USERNAME }}
+          MAVEN_JENKINS_PASSWORD: ${{ secrets.MAVEN_JENKINS_PASSWORD }}
+        run: |
+          set -x
+          echo $GPG_PRIVATE_KEY | base64 --decode | gpg --import --no-tty --batch --yes
+          mvn --settings settings.xml clean deploy -P release
+          mvn nexus-staging:release -P release --settings settings.xml
