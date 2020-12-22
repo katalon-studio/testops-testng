@@ -8,6 +8,8 @@ import com.katalon.testops.commons.model.Metadata;
 import com.katalon.testops.commons.model.Status;
 import com.katalon.testops.commons.model.TestResult;
 import com.katalon.testops.commons.model.TestSuite;
+import com.katalon.testops.testng.helper.LogHelper;
+import org.slf4j.Logger;
 import org.testng.*;
 import org.testng.annotations.Parameters;
 import org.testng.xml.XmlTest;
@@ -22,6 +24,8 @@ import static com.katalon.testops.commons.helper.StringHelper.getErrorMessage;
 import static com.katalon.testops.commons.helper.StringHelper.getStackTraceAsString;
 
 public class ReportListener implements ITestListener, IExecutionListener, ISuiteListener {
+
+  private static final Logger logger = LogHelper.getLogger();
 
   private static final List<Class<?>> INJECTED_TYPES = Arrays.asList(
       ITestContext.class, ITestResult.class, XmlTest.class, Method.class, Object[].class
@@ -129,7 +133,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onStart(ISuite suite) {
-    System.out.println("onStart: " + suite.getName());
+    logger.info("onStart: " + suite.getName());
 
     String uuid = generateAndRegisterUuid(suite);
 
@@ -140,25 +144,26 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onStart(ITestContext context) {
-    System.out.println(new StringBuilder("onStart context: ")
+    logger.info(new StringBuilder("onStart context: ")
         .append(context.getName())
         .append("|")
         .append("Current XML Test: ")
         .append(context.getCurrentXmlTest().getName())
         .append("|")
         .append("All methods: ")
-        .append(Joiner.on(",").join(context.getAllTestMethods())));
+        .append(Joiner.on(",").join(context.getAllTestMethods()))
+        .toString());
   }
 
   @Override
   public void onTestStart(ITestResult result) {
-    System.out.println("onTestStart: " + result.getMethod().getMethodName());
+    logger.info("onTestStart: " + result.getMethod().getMethodName());
 
   }
 
   @Override
   public void onTestFailure(ITestResult result) {
-    System.out.println("onTestFailure: " + result.getMethod().getMethodName());
+    logger.info("onTestFailure: " + result.getMethod().getMethodName());
     TestResult testResult = createTestResult(result, Status.FAILED);
     testResult.setParentUuid(getParentUuid(result));
     reportLifecycle.stopTestCase(testResult);
@@ -166,7 +171,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onTestSkipped(ITestResult result) {
-    System.out.println("onTestSkipped: " + result.getMethod().getMethodName());
+    logger.info("onTestSkipped: " + result.getMethod().getMethodName());
     TestResult testResult = createTestResult(result, Status.SKIPPED);
     testResult.setParentUuid(getParentUuid(result));
     reportLifecycle.stopTestCase(testResult);
@@ -174,7 +179,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-    System.out.println("onTestFailedButWithinSuccessPercentage: " + result.getMethod().getMethodName());
+    logger.info("onTestFailedButWithinSuccessPercentage: " + result.getMethod().getMethodName());
     TestResult testResult = createTestResult(result, Status.PASSED);
     testResult.setParentUuid(getParentUuid(result));
     reportLifecycle.stopTestCase(testResult);
@@ -182,7 +187,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onTestFailedWithTimeout(ITestResult result) {
-    System.out.println("onTestFailedWithTimeout: " + result.getMethod().getMethodName());
+    logger.info("onTestFailedWithTimeout: " + result.getMethod().getMethodName());
     TestResult testResult = createTestResult(result, Status.ERROR);
     testResult.setParentUuid(getParentUuid(result));
     reportLifecycle.stopTestCase(testResult);
@@ -190,7 +195,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onTestSuccess(ITestResult result) {
-    System.out.println("onTestSuccess: " + result.getMethod().getMethodName());
+    logger.info("onTestSuccess: " + result.getMethod().getMethodName());
     TestResult testResult = createTestResult(result, Status.PASSED);
     testResult.setParentUuid(getParentUuid(result));
     reportLifecycle.stopTestCase(testResult);
@@ -198,12 +203,12 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
 
   @Override
   public void onFinish(ITestContext context) {
-    System.out.println("onFinish context: " + context);
+    logger.info("onFinish context: " + context);
   }
 
   @Override
   public void onFinish(ISuite suite) {
-    System.out.println("onFinish ISuite: " + suite.getName());
+    logger.info("onFinish ISuite: " + suite.getName());
     String uuid = getOrCreateUuid(suite);
     reportLifecycle.stopTestSuite(uuid);
   }

@@ -69,6 +69,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <testng-version>7.3.0</testng-version>
+        <sl4j-version>1.7.30</sl4j-version>
         <testops-commons-version>0.0.1-SNAPSHOT</testops-commons-version>
     </properties>
 
@@ -84,6 +85,17 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${sl4j-version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${sl4j-version}</version>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
