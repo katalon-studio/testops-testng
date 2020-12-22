@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Calculator Suite (parallel)" parallel="tests">
+    <parameter name="a" value="-123" />
+    <parameter name="result" value="0" />
+    <test name="Calculator Test">
+        <classes>
+            <class name="com.katalon.testops.CalculatorTestNGTest"/>
+        </classes>
+    </test>
+    <test name="Calculator Divide By Zero Test">
+        <classes>
+            <class name="com.katalon.testops.CalculatorDivideByZeroTestNGTest"/>
+        </classes>
+    </test>
+</suite>
