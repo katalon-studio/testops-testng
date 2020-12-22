@@ -36,5 +36,5 @@ jobs:
         run: |
           set -x
           echo $GPG_PRIVATE_KEY | base64 --decode | gpg --import --no-tty --batch --yes
-          mvn --settings settings.xml clean deploy -P release
-          mvn nexus-staging:release -P release --settings settings.xml
+          mvn --settings settings.xml clean deploy -P release -Dtestng.dtd.http=true
+          mvn nexus-staging:release -P release --settings settings.xml -Dtestng.dtd.http=true
