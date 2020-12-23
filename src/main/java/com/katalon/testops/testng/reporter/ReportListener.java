@@ -220,5 +220,6 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
     reportLifecycle.stopExecution();
     reportLifecycle.writeExecutionReport();
     reportLifecycle.upload();
+    reportLifecycle.reset();
   }
 }
