@@ -45,6 +45,7 @@ public class ReportListener implements ITestListener, IExecutionListener, ISuite
     public void onTestStart(ITestResult result) {
         tryCatch(() -> {
             logger.info("onTestStart: " + result.getMethod().getMethodName());
+            reportLifecycle.startTestCase();
         });
     }
 
