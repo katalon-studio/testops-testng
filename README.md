@@ -1,6 +1,6 @@
 # Katalon TestOps TestNG
 
-This is a TestNG Listener for submitting test results to Katalon TestOps.
+This is the TestNG Reporter for submitting test results to Katalon TestOps.
 
 ## Usage
 
