@@ -14,6 +14,8 @@ https://github.com/katalon-studio-samples/testops-testng-sample
 `testops.properties` in `resources` directory
 
 ```
+testops.serverUrl=htts://testops.katalon.io
+
 testops.apiKey=
 
 testops.projectId=
