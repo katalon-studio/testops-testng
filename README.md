@@ -20,7 +20,7 @@ Add the dependency to `pom.xml`:
 
 ### Configuration
 
-Configurations will be read from environment variable, Java system properties, and properties file in this order.
+Configurations will be read from environment variables, Java system properties, and properties file in this order.
 
 * `testops.serverUrl` (environment variable: `TESTOPS_SERVERURL`)
 Katalon TestOps endpoint (default: `https://testops.katalon.io`).
@@ -31,7 +31,7 @@ Your Katalon TestOps API Key.
 * `testops.projectId` (environment variable: `TESTOPS_PROJECTID`)
 The Katalon TestOps project that will receive the test results.
 
-#### Via environment variable
+#### Via environment variables
 
 * Linux
 
