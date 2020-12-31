@@ -73,6 +73,6 @@ Run the command:
 mvn test
 ```
 
-## Sample
+## Samples
 
 https://github.com/katalon-studio-samples/testops-testng-sample
