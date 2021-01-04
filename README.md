@@ -13,8 +13,8 @@ Add the dependency to `pom.xml`:
 ```xml
 <dependency>
     <groupId>com.katalon</groupId>
-    <artifactId>testops-junit4</artifactId>
-    <version>1.0.1</version>
+    <artifactId>testops-testng</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
