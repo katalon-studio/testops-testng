@@ -75,8 +75,7 @@ public class ReportHelper {
 
         if (status.equals(Status.FAILED) || status.equals(Status.ERROR) || status.equals(Status.SKIPPED)) {
             final Throwable throwable = result.getThrowable();
-            testResult.setErrorMessage(getErrorMessage(throwable));
-            testResult.setStackTrace(getStackTraceAsString(throwable));
+            testResult.addError(throwable);
         }
         testResult.setParameters(getParameters(result.getMethod(), result.getParameters()));
 

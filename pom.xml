@@ -71,7 +71,7 @@
 
         <testng-version>7.3.0</testng-version>
         <sl4j-version>1.7.30</sl4j-version>
-        <testops-commons-version>1.0.0</testops-commons-version>
+        <testops-commons-version>1.0-SNAPSHOT</testops-commons-version>
     </properties>
 
 <!--    <repositories>-->
