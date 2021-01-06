@@ -1,4 +1,5 @@
 .idea/
 target/
 testops-testng.iml
+testops.properties
 
