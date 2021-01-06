@@ -14,7 +14,7 @@ Add the dependency to `pom.xml`:
 <dependency>
     <groupId>com.katalon</groupId>
     <artifactId>testops-testng</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.1</version>
 </dependency>
 ```
 
