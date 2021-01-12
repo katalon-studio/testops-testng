@@ -7,7 +7,7 @@
     <groupId>com.katalon</groupId>
     <artifactId>testops-testng</artifactId>
     <name>TestOps TestNG</name>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <url>https://github.com/katalon-studio/testops-testng</url>
     <description>Katalon TestOps SDK</description>
 
@@ -71,7 +71,7 @@
 
         <testng-version>7.3.0</testng-version>
         <sl4j-version>1.7.30</sl4j-version>
-        <testops-commons-version>1.1.2</testops-commons-version>
+        <testops-commons-version>1.1.5</testops-commons-version>
     </properties>
 
 <!--    <repositories>-->
