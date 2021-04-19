@@ -1,4 +1,4 @@
-name: Publish release package
+name: Manual Publish Release Package
 
 on:
   workflow_dispatch:
@@ -36,3 +36,12 @@ jobs:
           echo $GPG_PRIVATE_KEY | base64 --decode | gpg --import --no-tty --batch --yes
           mvn --settings settings.xml clean deploy -P release -Dtestng.dtd.http=true
           mvn nexus-staging:release -P release --settings settings.xml -Dtestng.dtd.http=true
+
+      - name: Upload Version Maven Package In Github
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ls -la
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          gh release create v$VERSION
