@@ -1,9 +1,7 @@
 name: Publish release package
 
 on:
-  push:
-    branches:
-      - release
+  workflow_dispatch:
 
 jobs:
   publish:
