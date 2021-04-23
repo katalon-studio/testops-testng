@@ -7,7 +7,7 @@
     <groupId>com.katalon</groupId>
     <artifactId>testops-testng</artifactId>
     <name>TestOps TestNG</name>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
     <url>https://github.com/katalon-studio/testops-testng</url>
     <description>Katalon TestOps SDK</description>
 
